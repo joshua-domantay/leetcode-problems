@@ -1,4 +1,4 @@
-public class p35 {
+public class p_0035 {
     public static void main(String[] args) {
         System.out.println(searchInsert(new int[]{1,3,5,6}, 2));
         System.out.println(searchInsert(new int[]{1,3,5,6}, 7));

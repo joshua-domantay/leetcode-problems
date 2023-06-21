@@ -1,7 +1,7 @@
 import java.util.Set;
 import java.util.HashSet;
 
-public class p217 {
+public class p_0217 {
     public static void main(String[] args) {
         System.out.println(containsDuplicate(new int[]{1,2,3,1}));
     }

@@ -1,4 +1,4 @@
-public class p151 {
+public class p_0151 {
     public static void main(String[] args) {
         System.out.println(reverseWords("the sky is blue"));
         System.out.println(reverseWords("a good   example"));
