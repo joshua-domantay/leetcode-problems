@@ -22,17 +22,26 @@ public class p_0859 {
                 }
             }
         } else {
+            int first = -1;
+            int second = -1;
             for(int i = 0; i < s.length(); i++) {
                 if(s.charAt(i) != goal.charAt(i)) {
-                    int index = s.lastIndexOf(goal.charAt(i));
-                    while(index > i) {
-                        String t = s.substring(0, i) + s.charAt(index) + s.substring(i + 1, index) + s.charAt(i) + s.substring(index + 1, s.length());
-                        if(t.equals(goal)) {
-                            return true;
-                        }
-                        index = s.substring(0, index).lastIndexOf(goal.charAt(i));
+                    if(first == -1) {
+                        first = i;
+                    } else if(second == -1) {
+                        second = i;
+                    } else {
+                        return false;
                     }
                 }
+            }
+
+            if((first == -1) || (second == -1)) {
+                return false;
+            }
+
+            if((s.charAt(first) == goal.charAt(second)) && (s.charAt(second) == goal.charAt(first))) {
+                return true;
             }
         }
 
