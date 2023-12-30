@@ -1,4 +1,6 @@
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class p_0819 {
     public static void main(String[] args) {
@@ -7,22 +9,22 @@ public class p_0819 {
     }
 
     public static String mostCommonWord(String paragraph, String[] banned) {
+        List<String> bannedList = Arrays.asList(banned);
         HashMap<String, Integer> paragraphMap = new HashMap<>();
         String result = "";
         int max = -1;
-        for(String ban : banned) {
-            paragraphMap.put(ban.toLowerCase(), -10000);
-        }
-        for(String word : paragraph.split("[!? ',;.]+")) {
-            if(paragraphMap.containsKey(word.toLowerCase())) {
-                paragraphMap.put(word.toLowerCase(), paragraphMap.get(word.toLowerCase()) + 1);
-            } else {
-                paragraphMap.put(word.toLowerCase(), 0);
-            }
+        for(String word : paragraph.toLowerCase().split("[!? ',;.]+")) {
+            if(!bannedList.contains(word)) {
+                if(paragraphMap.containsKey(word)) {
+                    paragraphMap.put(word, paragraphMap.get(word) + 1);
+                } else {
+                    paragraphMap.put(word, 0);
+                }
 
-            if(paragraphMap.get(word.toLowerCase()) > max) {
-                result = word.toLowerCase();
-                max = paragraphMap.get(word.toLowerCase());
+                if(paragraphMap.get(word) > max) {
+                    result = word;
+                    max = paragraphMap.get(word);
+                }
             }
         }
         return result;
