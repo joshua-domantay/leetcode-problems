@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class p_0884 {
     public static void main(String[] args) {
@@ -14,26 +13,16 @@ public class p_0884 {
         System.out.println();
     }
 
+    // Use HashSet according to better solutions
     public static String[] uncommonFromSentences(String s1, String s2) {
-        HashMap<String, Integer> map = new HashMap<>();
+        ArrayList<String> words = new ArrayList<>();
         ArrayList<String> resultAL = new ArrayList<>();
-        for(String a : s1.toLowerCase().split(" ")) {
-            if(map.containsKey(a)) {
-                map.put(a, map.get(a) + 1);
+        for(String a : (s1 + " " + s2).toLowerCase().split(" ")) {
+            if(words.contains(a)) {
                 resultAL.remove(a);
             } else {
-                map.put(a, 1);
+                words.add(a);
                 resultAL.add(a);
-            }
-        }
-
-        for(String b : s2.toLowerCase().split(" ")) {
-            if(map.containsKey(b)) {
-                map.put(b, map.get(b) + 1);
-                resultAL.remove(b);
-            } else {
-                map.put(b, 1);
-                resultAL.add(b);
             }
         }
         
