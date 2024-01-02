@@ -1,5 +1,3 @@
-import java.util.HashSet;
-
 public class p_1935 {
     public static void main(String[] args) {
         System.out.println(canBeTypedWords("hello world", "ad"));
@@ -8,18 +6,17 @@ public class p_1935 {
     }
 
     public static int canBeTypedWords(String text, String brokenLetters) {
-        int words = 0;
-        HashSet<Character> brokenSet = new HashSet<>();
-        
+        char[] broken = new char[26];
         for(char c : brokenLetters.toCharArray()) {
-            brokenSet.add(c);
+            broken[c - 97]++;   // a = 97
         }
 
+        int words = 0;
         boolean clear;
         for(String word : text.split(" ")) {
             clear = true;
             for(char c : word.toCharArray()) {
-                if(brokenSet.contains(c)) {
+                if(broken[c - 97] != 0) {
                     clear = false;
                     break;
                 }
@@ -28,7 +25,6 @@ public class p_1935 {
                 words++;
             }
         }
-
         return words;
     }
 }
