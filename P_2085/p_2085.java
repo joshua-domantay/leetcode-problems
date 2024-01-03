@@ -9,29 +9,32 @@ public class p_2085 {
     }
 
     public static int countWords(String[] words1, String[] words2) {
-        HashMap<String, Integer[]> map = new HashMap<>();
+        HashMap<String, Integer> map = new HashMap<>();
         for(String x : words1) {
             if(map.containsKey(x)) {
-                map.get(x)[0]++;
+                map.put(x, (map.get(x) + 1));
             } else {
-                map.put(x, new Integer[]{1, 0});
+                map.put(x, 1);
             }
         }
 
         for(String y : words2) {
             if(map.containsKey(y)) {
-                map.get(y)[1]++;
+                if(map.get(y) > 1) {
+                    map.remove(y);      // Remove to reduce loop iterations for counting
+                } else {
+                    map.put(y, (map.get(y) - 1));
+                }
             }
         }
 
         int count = 0;
-        for(Map.Entry<String, Integer[]> m : map.entrySet()) {
-            Integer[] values = m.getValue();
-            if((values[0] == 1) && (values[1] == 1)) {
+        for(Map.Entry<String, Integer> m : map.entrySet()) {
+            if(m.getValue() == 0) {
                 count++;
             }
         }
-
+        
         return count;
     }
 }
