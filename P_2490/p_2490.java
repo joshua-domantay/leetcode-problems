@@ -7,13 +7,11 @@ public class p_2490 {
     }
 
     public static boolean isCircularSentence(String sentence) {
-        char last = sentence.charAt(sentence.length() - 1);
         String[] words = sentence.split(" ");
-        for(String x : words) {
-            if(x.charAt(0) != last) {
+        for(int i = 0; i < words.length; i++) {
+            if(words[i].charAt(words[i].length() - 1) != words[(i + 1) % words.length].charAt(0)) {
                 return false;
             }
-            last = x.charAt(x.length() - 1);
         }
         return true;
     }
