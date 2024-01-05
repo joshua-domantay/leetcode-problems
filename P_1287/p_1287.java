@@ -8,17 +8,24 @@ public class p_1287 {
     }
 
     public static int findSpecialInteger(int[] arr) {
-        int last = arr[0], count = 0;
-        for(int num : arr) {
-            if(num != last) {
-                last = num;
-                count = 0;
-            }
-            count++;
-            if(count > (arr.length / 4)) {
-                return num;
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i] == arr[i + (arr.length / 4)]) {
+                return arr[i];
             }
         }
-        return last;
+        return arr[0];
+
+        // int last = arr[0], count = 0;
+        // for(int num : arr) {
+        //     if(num != last) {
+        //         last = num;
+        //         count = 0;
+        //     }
+        //     count++;
+        //     if(count > (arr.length / 4)) {
+        //         return num;
+        //     }
+        // }
+        // return last;
     }
 }
