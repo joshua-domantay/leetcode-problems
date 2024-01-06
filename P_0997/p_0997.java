@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class p_0997 {
     public static void main(String[] args) {
         System.out.println(findJudge(2, new int[][]{{1,2}}));
@@ -9,24 +7,40 @@ public class p_0997 {
     }
 
     public static int findJudge(int n, int[][] trust) {
-        int[] numTrusts = new int[n];
-        ArrayList<Integer> noTrust = new ArrayList<>();
-        for(int i = 0; i < n; i++) {
-            noTrust.add(i);
+        int[] numTrusts = new int[n + 1];
+        int[] numGiveTrust = new int[n + 1];
+        for(int[] pair : trust) {
+            numTrusts[pair[1]]++;
+            numGiveTrust[pair[0]]++;
         }
 
-        for(int[] pair : trust) {
-            numTrusts[pair[1] - 1]++;
-            noTrust.remove((Integer) (pair[0] - 1));
-            if(noTrust.size() <= 0) {
-                return -1;
+        for(int i = 1; i <= n; i++) {
+            if((numTrusts[i] == (n - 1)) && (numGiveTrust[i] == 0)) {
+                return i;
             }
         }
 
-        if(noTrust.size() > 1) {
-            return -1;
-        }
+        return -1;
 
-        return (numTrusts[noTrust.get(0)] == (n - 1)) ? (noTrust.get(0) + 1) : -1;
+
+        // int[] numTrusts = new int[n];
+        // ArrayList<Integer> noTrust = new ArrayList<>();
+        // for(int i = 0; i < n; i++) {
+        //     noTrust.add(i);
+        // }
+
+        // for(int[] pair : trust) {
+        //     numTrusts[pair[1] - 1]++;
+        //     noTrust.remove((Integer) (pair[0] - 1));
+        //     if(noTrust.size() <= 0) {
+        //         return -1;
+        //     }
+        // }
+
+        // if(noTrust.size() > 1) {
+        //     return -1;
+        // }
+
+        // return (numTrusts[noTrust.get(0)] == (n - 1)) ? (noTrust.get(0) + 1) : -1;
     }
 }
