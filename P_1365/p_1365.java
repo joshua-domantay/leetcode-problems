@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.PriorityQueue;
-
 public class p_1365 {
     public static void main(String[] args) {
         int[] test = smallerNumbersThanCurrent(new int[]{8,1,2,2,3});
@@ -19,47 +16,14 @@ public class p_1365 {
     }
 
     public static int[] smallerNumbersThanCurrent(int[] nums) {
-        int[] count = nums.clone();
-        mergeSort(count, 0, count.length);
-        ArrayList<Integer> countAL = new ArrayList<>();
-        for(int i : count) {
-            countAL.add(i);
-        }
+        int[] count = new int[nums.length];
         for(int i = 0; i < nums.length; i++) {
-            count[i] = countAL.indexOf((Integer) nums[i]);
-        }
-        return count;
-    }
-
-    public static void mergeSort(int[] arr, int start, int end) {
-        if((end - start) <= 1) { return; }
-
-        int mid = (end + start) / 2;
-        mergeSort(arr, start, mid);
-        mergeSort(arr, mid, end);
-
-        int[] sort = new int[end - start];
-        int a = start, b = mid;
-        for(int i = 0; i < sort.length; i++) {
-            if((a != mid) && (b != end)) {
-                if(arr[a] < arr[b]) {
-                    sort[i] = arr[a];
-                    a++;
-                } else {
-                    sort[i] = arr[b];
-                    b++;
+            for(int j = 0; j < nums.length; j++) {
+                if(nums[j] < nums[i]) {
+                    count[i]++;
                 }
-            } else if(a != mid) {
-                sort[i] = arr[a];
-                a++;
-            } else {
-                sort[i] = arr[b];
-                b++;
             }
         }
-
-        for(int i = 0; i < sort.length; i++) {
-            arr[start + i] = sort[i];
-        }
+        return count;
     }
 }
