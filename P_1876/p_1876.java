@@ -1,5 +1,3 @@
-import java.util.HashSet;
-
 public class p_1876 {
     public static void main(String[] args) {
         System.out.println(countGoodSubstrings("xyzzaz"));
@@ -8,17 +6,15 @@ public class p_1876 {
 
     public static int countGoodSubstrings(String s) {
         int result = 0;
-        HashSet<Character> set = new HashSet<>();
+        char[] record = new char[3];
         for(int i = 0; i < (s.length() - 2); i++) {
-            for(int j = 0; j < 3; j++) {
-                char x = s.charAt(i + j);
-                if(set.contains(x)) {
-                    break;
-                }
-                set.add(x);
-            }
-            if(set.size() == 3) { result++; }
-            set.clear();
+            record[0] = s.charAt(i);
+            record[1] = s.charAt(i + 1);
+            if(record[0] == record[1]) { continue; }
+            record[2] = s.charAt(i + 2);
+            if((record[2] == record[0]) || (record[2] == record[1])) { continue; }
+            
+            result++;
         }
         return result;
     }
