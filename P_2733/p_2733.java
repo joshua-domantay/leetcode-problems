@@ -10,18 +10,30 @@ public class p_2733 {
 
     public static int findNonMinOrMax(int[] nums) {
         if(nums.length < 3) { return -1; }
-        
-        int min = 0, max = 0, between = 0;
-        for(int i = 0; i < 3; i++) {
-            between = i;
-            if(nums[i] < nums[min]) {
-                between = min;
-                min = i;
-            } else if (nums[max] < nums[i]) {
-                between = max;
-                max = i;
-            }
-        }
-        return nums[between];
+
+        return (nums[0] + nums[1] + nums[2]) - Math.min(Math.min(nums[0], nums[1]), nums[2]) - Math.max(Math.max(nums[0], nums[1]), nums[2]);
+
+
+        // int min1 = Math.min(nums[0], nums[1]);
+        // int min2 = Math.min(nums[1], nums[2]);
+        // if(min1 == min2) {
+        //     return Math.min(nums[0], nums[2]);
+        // } else {
+        //     return Math.max(min1, min2);
+        // }
+
+
+        // int min = 0, max = 0, between = 0;
+        // for(int i = 0; i < 3; i++) {
+        //     between = i;
+        //     if(nums[i] < nums[min]) {
+        //         between = min;
+        //         min = i;
+        //     } else if (nums[max] < nums[i]) {
+        //         between = max;
+        //         max = i;
+        //     }
+        // }
+        // return nums[between];
     }
 }
