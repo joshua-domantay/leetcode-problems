@@ -12,7 +12,10 @@ insert into Person (id, email) values ('3', 'a@b.com');
 
 
 -- Code
-SELECT * FROM Person;
+SELECT email
+FROM Person
+GROUP BY email
+HAVING COUNT(email) >= 2;
 
 
 -- Drop after run
