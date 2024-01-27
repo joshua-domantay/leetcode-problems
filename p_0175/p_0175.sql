@@ -1,4 +1,4 @@
--- Problem 1757 - Combine Two Tables
+-- Problem 0175 - Combine Two Tables
 -- MySQL
 
 
