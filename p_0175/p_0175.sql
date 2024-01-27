@@ -15,7 +15,9 @@ insert into Address (addressId, personId, city, state) values ('2', '3', 'Leetco
 
 
 -- Code
-
+SELECT firstName, lastName, city, state FROM Person
+LEFT JOIN Address
+USING(personId);
 
 
 -- Drop after run
