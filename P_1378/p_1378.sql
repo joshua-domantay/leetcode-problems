@@ -18,8 +18,10 @@ insert into EmployeeUNI (id, unique_id) values ('11', '2');
 insert into EmployeeUNI (id, unique_id) values ('90', '3');
 
 -- Code
-SELECT * FROM Employees;
-SELECT * FROM EmployeeUNI;
+SELECT unique_id, name
+FROM Employees
+LEFT JOIN EmployeeUNI
+ON Employees.id = EmployeeUNI.id;
 
 
 -- Drop after run
