@@ -12,7 +12,7 @@ insert into Employee (id, name, salary, managerId) values (3, 'Sam', '60000', Nu
 insert into Employee (id, name, salary, managerId) values (4, 'Max', '90000', Null);
 
 -- Code
-SELECT t1.name FROM Employee AS t1
+SELECT t1.name AS Employee FROM Employee AS t1
 JOIN (
     SELECT id, name, salary FROM Employee
     WHERE id IN (
