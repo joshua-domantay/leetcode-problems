@@ -13,7 +13,10 @@ insert into cinema (id, movie, description, rating) values ('4', 'Ice song', 'Fa
 insert into cinema (id, movie, description, rating) values ('5', 'House card', 'Interesting', '9.1');
 
 -- Code
-SELECT * FROM cinema;
+SELECT * FROM cinema
+WHERE id % 2 = 1
+AND description <> 'boring'
+ORDER BY id DESC;
 
 
 -- Drop after run
