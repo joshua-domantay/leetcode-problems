@@ -22,8 +22,12 @@ insert into Transactions (transaction_id, visit_id, amount) values ('12', '1', '
 insert into Transactions (transaction_id, visit_id, amount) values ('13', '2', '970');
 
 -- Code
-SELECT * FROM Visits;
-SELECT * FROM Transactions;
+SELECT customer_id, COUNT(customer_id) AS 'count_no_trans' FROM Visits
+WHERE visit_id NOT IN (
+    SELECT visit_id FROM Transactions
+    GROUP BY visit_id
+)
+GROUP BY customer_id;
 
 
 -- Drop after run
