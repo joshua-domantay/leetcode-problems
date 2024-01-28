@@ -16,7 +16,7 @@ insert into cinema (id, movie, description, rating) values ('5', 'House card', '
 SELECT * FROM cinema
 WHERE id % 2 = 1
 AND description <> 'boring'
-ORDER BY id DESC;
+ORDER BY rating DESC;
 
 
 -- Drop after run
