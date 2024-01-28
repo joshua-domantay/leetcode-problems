@@ -15,7 +15,10 @@ insert into Views (article_id, author_id, viewer_id, view_date) values ('3', '4'
 insert into Views (article_id, author_id, viewer_id, view_date) values ('3', '4', '4', '2019-07-21');
 
 -- Code
-SELECT * FROM Views;
+SELECT author_id AS id FROM Views
+WHERE author_id = viewer_id
+GROUP BY id
+ORDER BY id;
 
 
 -- Drop after run
