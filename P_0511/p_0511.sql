@@ -13,7 +13,7 @@ insert into Activity (player_id, device_id, event_date, games_played) values ('3
 insert into Activity (player_id, device_id, event_date, games_played) values ('3', '4', '2018-07-03', '5');
 
 -- Code
-SELECT DISTINCT player_id, MIN(event_date) as event_date
+SELECT DISTINCT player_id, MIN(event_date) as first_login
 FROM Activity
 GROUP BY player_id;
 
