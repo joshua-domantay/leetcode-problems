@@ -14,7 +14,9 @@ insert into Customer (id, name, referee_id) values (5, 'Zack', 1);
 insert into Customer (id, name, referee_id) values (6, 'Mark', 2);
 
 -- Code
-SELECT * FROM Customer;
+SELECT name
+FROM Customer
+WHERE referee_id <> 2 OR referee_id IS NULL;
 
 
 -- Drop after run
