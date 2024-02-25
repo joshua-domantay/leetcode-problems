@@ -7,9 +7,7 @@ public class p_2185 {
     public static int prefixCount(String[] words, String pref) {
         int count = 0;
         for(String word : words) {
-            if(word.length() >= pref.length()) {
-                if(word.substring(0, pref.length()).equals(pref)) { count++; }
-            }
+            if(word.startsWith(pref)) { count++; }
         }
         return count;
     }
